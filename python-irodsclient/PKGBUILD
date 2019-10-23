@@ -1,0 +1,26 @@
+# Maintainer: alienzj <alienchuj@gmail.com>
+pkgname=python-irodsclient
+pkgver=0.8.1
+pkgrel=1
+pkgdesc="A Python API for iRODS"
+arch=('i686' 'x86_64')
+url="https://github.com/irods/python-irodsclient"
+license=('custom')
+depends=('python-six'
+         'python-prettytable'
+         'python-xmlrunner')
+makedepends=('python-setuptools')
+source=("https://github.com/irods/python-irodsclient/archive/v0.8.1.tar.gz")
+md5sums=('03e297a174f1593c40c25ccc24b4df5c')
+
+prepare() {
+  cd "$srcdir/$pkgname-$pkgver"
+  echo 0.8.1
+}
+
+package() {
+  cd "$srcdir/$pkgname-$pkgver"
+  python setup.py install --root="${pkgdir}/" --optimize=1
+}
+
+# vim:set ts=2 sw=2 et:
